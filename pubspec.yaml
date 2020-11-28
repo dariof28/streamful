@@ -1,8 +1,7 @@
 name: streamful
 description: Widgets and utilities to deal with streams
 version: 0.0.1
-author:
-homepage:
+repository: https://github.com/dariof28/streamful
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
