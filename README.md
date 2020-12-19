@@ -17,3 +17,10 @@ StreamedLoading(
   strokeWidth: 4.0,
 );
 ```
+
+### Loading mixin
+
+A mixin that adds a `StreamController<bool>` to a class. This way you can easily deal with a stream representing the loading status.
+
+You can set the loading status using `loadStart()` and `loadStop()` functions.
+To retrieve the loading status you can use the `isLoading` getter.

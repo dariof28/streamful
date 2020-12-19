@@ -1,5 +1,4 @@
-import 'dart:async';
-
+import 'package:example/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:streamful/streamful.dart';
 
@@ -31,17 +30,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _controller = StreamController<bool>();
-  bool _isLoading = true;
   Color _color = Colors.blue;
   double _strokeWidth = 4.0;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller.add(_isLoading);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: _buildActionButtons(),
         ),
         StreamedLoading(
-          stream: _controller.stream,
+          stream: bloc.isLoading,
           color: _color,
           strokeWidth: _strokeWidth,
         ),
@@ -160,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
         RaisedButton(
           onPressed: () {
             setState(() {
-              _controller.add(true);
+              bloc.loadStart();
             });
           },
           child: Text('Start loading'),
@@ -169,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
         RaisedButton(
           onPressed: () {
             setState(() {
-              _controller.add(false);
+              bloc.loadStop();
             });
           },
           child: Text('Stop loading'),
