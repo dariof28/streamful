@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Container(
           alignment: Alignment.centerLeft,
           child: Text(
-            'Streamed Loading',
+            'Streamful',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.0),
           ),
         ),
@@ -66,10 +66,15 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.only(bottom: 8.0),
           child: _buildActionButtons(),
         ),
-        StreamedLoading(
-          stream: bloc.isLoading,
-          color: _color,
-          strokeWidth: _strokeWidth,
+        StreamWidget<String>(
+          stream: bloc.data,
+          onData: (data) => Text(data),
+          onError: (error) => Text(error.toString()),
+          onLoad: StreamedLoading(
+            stream: bloc.isLoading,
+            color: _color,
+            strokeWidth: _strokeWidth,
+          ),
         ),
       ],
     );
@@ -149,20 +154,16 @@ class _MyHomePageState extends State<MyHomePage> {
       children: [
         RaisedButton(
           onPressed: () {
-            setState(() {
-              bloc.loadStart();
-            });
+            bloc.getData();
           },
-          child: Text('Start loading'),
+          child: Text('Success'),
         ),
         Spacer(),
         RaisedButton(
           onPressed: () {
-            setState(() {
-              bloc.loadStop();
-            });
+            bloc.getError();
           },
-          child: Text('Stop loading'),
+          child: Text('Error'),
         ),
       ],
     );
