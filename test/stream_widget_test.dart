@@ -2,11 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:streamful/streamful.dart';
 
 main() {
   Stream<String> _getStreamData(String value) {
-    final controller = StreamController<String>();
+    final controller = BehaviorSubject<String>();
     controller.add(value);
     controller.close();
 
@@ -14,7 +15,7 @@ main() {
   }
 
   Stream<String> _getStreamError(String value) {
-    final controller = StreamController<String>();
+    final controller = BehaviorSubject<String>();
     controller.addError(value);
     controller.close();
 
@@ -22,7 +23,7 @@ main() {
   }
 
   Stream<String> _getEmptyStream() {
-    final controller = StreamController<String>();
+    final controller = BehaviorSubject<String>();
     controller.close();
 
     return controller.stream;
