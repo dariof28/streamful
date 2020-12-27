@@ -1,12 +1,11 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:streamful/streamful.dart';
 
 main() {
   Stream<bool> _getStream(bool value) {
-    final controller = StreamController<bool>();
+    final controller = BehaviorSubject<bool>();
     controller.add(value);
     controller.close();
 
