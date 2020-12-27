@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:rxdart/rxdart.dart';
 import 'package:streamful/src/streamed_loading.dart';
 
