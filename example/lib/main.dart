@@ -152,14 +152,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildActionButtons() {
     return Row(
       children: [
-        RaisedButton(
+        ElevatedButton(
           onPressed: () {
             bloc.getData();
           },
           child: Text('Success'),
         ),
         Spacer(),
-        RaisedButton(
+        ElevatedButton(
           onPressed: () {
             bloc.getError();
           },
