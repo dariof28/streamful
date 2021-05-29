@@ -1,6 +1,6 @@
 name: streamful
 description: This package provides widgets and utilities to deal with streams.
-version: 1.0.1
+version: 2.0.0
 repository: https://github.com/dariof28/streamful
 
 environment:
