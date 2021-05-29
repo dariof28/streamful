@@ -31,7 +31,7 @@ main() {
       (WidgetTester tester) async {
     var widget = StreamWidget<String>(
       stream: _getStreamData('success'),
-      onData: (data) => Text(data, textDirection: TextDirection.ltr),
+      onData: (data) => Text(data as String, textDirection: TextDirection.ltr),
       onError: (_) => Text('error', textDirection: TextDirection.ltr),
       onLoad: Text('loading...', textDirection: TextDirection.ltr),
     );
@@ -49,7 +49,8 @@ main() {
     var widget = StreamWidget<String>(
       stream: _getStreamError('error'),
       onData: (_) => Text('success', textDirection: TextDirection.ltr),
-      onError: (object) => Text(object, textDirection: TextDirection.ltr),
+      onError: (object) =>
+          Text(object as String, textDirection: TextDirection.ltr),
       onLoad: Text('loading...', textDirection: TextDirection.ltr),
     );
 

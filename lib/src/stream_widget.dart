@@ -12,11 +12,11 @@ typedef ErrorCallBack<Object> = Widget Function(Object error);
 /// If onData, onError or onLoad are null, a Container is returned for that specif scenario.
 class StreamWidget<T> extends StatelessWidget {
   final Stream<T> stream;
-  final DataCallBack<T> onData;
-  final ErrorCallBack<Object> onError;
-  final Widget onLoad;
+  final DataCallBack<T?>? onData;
+  final ErrorCallBack<Object?>? onError;
+  final Widget? onLoad;
 
-  StreamWidget({@required this.stream, this.onData, this.onError, this.onLoad});
+  StreamWidget({required this.stream, this.onData, this.onError, this.onLoad});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class StreamWidget<T> extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           if (onError != null) {
-            return onError(snapshot.error);
+            return onError!(snapshot.error);
           }
 
           return Container();
@@ -33,7 +33,7 @@ class StreamWidget<T> extends StatelessWidget {
 
         if (snapshot.hasData) {
           if (onData != null) {
-            return onData(snapshot.data);
+            return onData!(snapshot.data);
           }
 
           return Container();

@@ -42,7 +42,7 @@ main() {
     WidgetPredicate predicate = (Widget widget) =>
         widget is CircularProgressIndicator &&
         widget.valueColor is AlwaysStoppedAnimation &&
-        widget.valueColor.value == color;
+        widget.valueColor!.value == color;
     expect(find.byWidgetPredicate(predicate), findsOneWidget);
   });
 
