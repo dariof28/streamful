@@ -21,22 +21,22 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  final String title;
+  final String? title;
 
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Color _color = Colors.blue;
+  Color? _color = Colors.blue;
   double _strokeWidth = 4.0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(title: Text(widget.title!)),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: _buildContent(),
@@ -66,9 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.only(bottom: 8.0),
           child: _buildActionButtons(),
         ),
-        StreamWidget<String>(
+        StreamWidget<String?>(
           stream: bloc.data,
-          onData: (data) => Text(data),
+          onData: (data) => Text(data!),
           onError: (error) => Text(error.toString()),
           onLoad: StreamedLoading(
             stream: bloc.isLoading,
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         Expanded(
-          child: DropdownButton(
+          child: DropdownButton<Color>(
             isExpanded: true,
             value: _color,
             items: _colors,

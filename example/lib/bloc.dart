@@ -2,9 +2,9 @@ import 'package:rxdart/rxdart.dart';
 import 'package:streamful/streamful.dart';
 
 class MyBloc with Loading {
-  final _dataController = BehaviorSubject<String>();
+  final _dataController = BehaviorSubject<String?>();
 
-  Stream<String> get data => _dataController.stream;
+  Stream<String?> get data => _dataController.stream;
 
   Future<void> getData() async {
     loadStart();
