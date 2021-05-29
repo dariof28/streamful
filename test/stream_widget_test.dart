@@ -49,7 +49,8 @@ main() {
     var widget = StreamWidget<String>(
       stream: _getStreamError('error'),
       onData: (_) => Text('success', textDirection: TextDirection.ltr),
-      onError: (object) => Text(object as String, textDirection: TextDirection.ltr),
+      onError: (object) =>
+          Text(object as String, textDirection: TextDirection.ltr),
       onLoad: Text('loading...', textDirection: TextDirection.ltr),
     );
 
