@@ -8,14 +8,14 @@ class StreamedLoading extends StatelessWidget {
   /// The color of the indicator.
   ///
   /// If null [ThemeData.accentColor] will be used.
-  final Color color;
+  final Color? color;
 
   /// The width of the line of the indicator.
   final double strokeWidth;
 
   StreamedLoading({
-    Key key,
-    @required this.stream,
+    Key? key,
+    required this.stream,
     this.color,
     this.strokeWidth = 4.0,
   })  : assert(strokeWidth != null),
@@ -26,7 +26,7 @@ class StreamedLoading extends StatelessWidget {
     return StreamBuilder<bool>(
       stream: stream,
       builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-        if (snapshot.hasData && snapshot.data) {
+        if (snapshot.hasData && snapshot.data!) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(
