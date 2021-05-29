@@ -18,8 +18,7 @@ class StreamedLoading extends StatelessWidget {
     required this.stream,
     this.color,
     this.strokeWidth = 4.0,
-  })  : assert(strokeWidth != null),
-        super(key: key);
+  })  : super(key: key);
 
   @override
   Widget build(BuildContext context) {
